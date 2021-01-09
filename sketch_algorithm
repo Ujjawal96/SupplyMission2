@@ -1,0 +1,62 @@
+var fixedRect, movingRect;
+var gameObject1,gameObject2,gameObject3,gameObject4;
+
+
+function setup() {
+  createCanvas(800,400);
+
+  fixedRect = createSprite(600, 200, 50, 80);
+  fixedRect.shapeColor = "green";
+  movingRect = createSprite(600, 300, 50, 80);
+  movingRect.shapeColor="green";
+  //moving
+  gameObject4 = createSprite(300, 300, 80, 80);
+  gameObject4.shapeColor="green";
+  gameObject3 = createSprite(300, 100, 80, 80);
+  gameObject3.shapeColor="green";
+ //fixed
+  gameObject2 = createSprite(200, 200, 80, 80);
+  gameObject2.shapeColor="green";
+  gameObject1=createSprite(100,200,80,80);
+  gameObject1.shapeColor="green";
+
+  gameObject3.velocityY = 3;
+  gameObject4.velocityY=-3;
+}
+
+function draw() {
+  background("black");  
+  movingRect.x=World.mouseX
+  movingRect.y=World.mouseY
+  
+  // console.log("X direction")
+  // console.log(movingRect.x - fixedRect.x );
+  // console.log(fixedRect.x - movingRect.x );
+  // console.log(fixedRect.width/2 + movingRect.width/2);
+  // console.log("Y direction")
+  // console.log(fixedRect.y - movingRect.y );
+  // console.log(movingRect.y - fixedRect.y );
+  // console.log( fixedRect.height/2 + movingRect.height/2);
+
+  if(isTouching(movingRect,gameObject1)){
+    movingRect.shapeColor = "red";
+    // fixedRect.shapeColor = "red";
+    gameObject1.shapeColor = "red";
+    // gameObject2.shapeColor = "red";
+  } else{
+    movingRect.shapeColor = "green";
+    // fixedRect.shapeColor = "green";
+    gameObject1.shapeColor = "green";
+    // gameObject2.shapeColor = "green";
+  }
+
+  bounceOff(gameObject3, gameObject4);
+
+  drawSprites();
+}
+
+
+
+
+
+
